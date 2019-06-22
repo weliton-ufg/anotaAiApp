@@ -1,5 +1,7 @@
 {
   "name": "anotaaiApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
