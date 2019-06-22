@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-listagem',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListagemPage implements OnInit {
 
-  constructor() { }
+  public lista= [
+    {name: 'Compra 10/01/2019'},
+    {name: 'Compra 11/02/2019'},
+    {name: 'Compra 12/03/2019'},
+    {name: 'Compra 20/03/2019'},
+    {name: 'Compra 09/04/2019'},
+    {name: 'Compra 25/04/2019'},
+  ]
+  constructor(public navCtrl: NavController) { }
 
   ngOnInit() {
   }
 
+  public listaDetalhe(link: any) {
+    console.log(link);
+    //alert('ola Carol!');
+    this.navCtrl.navigateForward(link);
+    
+  }
 }
