@@ -1,5 +1,8 @@
-# Anota Aí App                                                          ![Legenda](https://www.ufg.br/assets/ufg2/marca-ufg-677b562915f50ba83e8e1516f068bde65a0e00330471068ad6320189ac9f140a.svg)
-## Projeto de Programação Mobile Universidade Federal de Goiás.
+# Anota Aí App                                                          
+## Projeto de Programação Mobile 
+![Legenda](https://www.ufg.br/assets/ufg2/marca-ufg-677b562915f50ba83e8e1516f068bde65a0e00330471068ad6320189ac9f140a.svg)
+### Universidade Federal de Goiás. 
+
 
 
 <h3>Escopo</h3>
