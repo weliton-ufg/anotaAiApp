@@ -17,6 +17,6 @@
 
 
 
-<p>Para executar o aplicativo navegue ate a pasta raiz e execute o comando **ionic** **serve** </span>.</p>
+<p>Para executar o aplicativo navegue ate a pasta raiz e execute o comando **ionic** **serve**.</p>
 
 
