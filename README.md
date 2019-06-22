@@ -1,6 +1,5 @@
 # Anota Aí
 ## Projeto de Programação Mobile Universidade Federal de Goiás.
-
 ###Escopo
 
 
