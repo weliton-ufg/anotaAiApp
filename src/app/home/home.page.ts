@@ -15,7 +15,9 @@ export class HomePage {
                   {name: 'Novo Produto', link: '/produto/cadastro',icon:'nutrition'},
                   {name: 'Produtos', link: '/produto/listagem',icon:'list-box' },
                   {name: 'Dashboard', link: '/dashboard',icon:'pie' },
-                  {name: 'Compras', link: '/compras',icon:'cart' }
+                  {name: 'Compras', link: '/compras',icon:'cart' },
+                  {name: 'Categorias', link: '#',icon:'bookmark' },
+                  {name: 'QR-Code', link: '#',icon:'qr-scanner' }
                 ];
 
     constructor(public navCtrl: NavController) {
