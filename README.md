@@ -1,4 +1,4 @@
-# Aplicativo Anota Aí
+# Anota Aí App
 ## Projeto de Programação Mobile Universidade Federal de Goiás.
 
 <h3>Escopo</h3>
