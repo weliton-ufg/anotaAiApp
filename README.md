@@ -1,4 +1,4 @@
-# Anota Aí
+# Aplicativo Anota Aí
 ## Projeto de Programação Mobile Universidade Federal de Goiás.
 
 <h3>Escopo</h3>
@@ -12,7 +12,7 @@
 	<li>Estimativa de preço de uma lista.</li>
 	<li>Compartilhamento de lista com outros usuários.</li>
 	<li>Consultar nota fiscal através do QR-Code.</li>
-	<li>Comparar preço pago com o preço que estava na prateleira (Alertar o usuário se estão cobrando a mais ou a menos do preço que ele digitou</li>
+	<li>Comparar preço pago com o preço que estava na prateleira (Alertar o usuário se estão cobrando a mais ou a menos do preço que ele digitou.</li>
 </ul>
 
 
