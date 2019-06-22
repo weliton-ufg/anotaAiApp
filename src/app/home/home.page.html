@@ -1,14 +1,71 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
+
+<!--
 <ion-content>
   <div class="ion-padding">
     The world is your oyster.
     <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
   </div>
+</ion-content>
+-->
+
+
+<ion-content>
+
+    <ion-header>
+        <ion-toolbar>
+          <ion-title>
+            Anota Aí
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+  <ion-toolbar >
+    <div class="toolbarHome">
+        <br/>
+        <ion-grid >
+            <ion-row>
+                <ion-col>
+                   
+                </ion-col>
+                <ion-col>
+                   <!-- <ion-img class="imgLogo" src="/assets/logo.png" ></ion-img>-->
+                </ion-col>
+                <ion-col>
+                   
+                </ion-col>
+            </ion-row>
+        </ion-grid>    
+    </div>
+
+  </ion-toolbar>
+  <ion-grid  class="ionGridHome">
+
+      <ion-row>
+          <ion-col>
+              <ion-title class="ionTitleHome" >Hoje {{dataAtual}}</ion-title>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+              <ion-title class="ionTitleHome" >O que deseja fazer?</ion-title>
+          </ion-col>
+      </ion-row>
+
+      <ion-row>
+          <ion-col *ngFor="let item of menu"  size="6">
+            <ion-card class="ioncard"  (click)="redirectPage(item.link)"  >
+              <ion-card-header>
+                 <ion-icon name="{{item.icon}}" color="success" class="ioncardIcon"></ion-icon>
+                <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
+              </ion-card-header>
+            
+              <ion-card-content>
+               
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          
+      </ion-row>
+  </ion-grid>
 </ion-content>
