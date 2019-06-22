@@ -22,7 +22,7 @@ export class AppComponent {
      // this.statusBar.styleDefault();
      // #AARRGGBB where AA is an alpha value
       if (this.platform.is('android')) {
-        this.statusBar.backgroundColorByHexString("#1c7eb4");
+        this.statusBar.backgroundColorByHexString("#1b71a0");
       }
       this.splashScreen.hide();
     });
