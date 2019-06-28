@@ -16,7 +16,7 @@ export class HomePage {
                   {name: 'Produtos', link: '/produto/listagem',icon:'list-box' },
                   {name: 'Dashboard', link: '/dashboard',icon:'pie' },
                   {name: 'Compras', link: '/compras',icon:'cart' },
-                  {name: 'Categorias', link: '#',icon:'bookmark' },
+                  {name: 'Categorias', link: '/categoria/listagem',icon:'bookmark' },
                   {name: 'QR-Code', link: '#',icon:'qr-scanner' }
                 ];
 

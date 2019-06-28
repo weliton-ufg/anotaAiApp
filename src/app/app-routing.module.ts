@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'produto/cadastro', loadChildren: './produto/cadastro/cadastro.module#CadastroPageModule' },
   { path: 'produto/listagem', loadChildren: './produto/listagem/listagem.module#ListagemPageModule' },
   { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },
+  { path: 'categoria/listagem', loadChildren: './categoria/listagem/listagem.module#ListagemPageModule' },
+  { path: 'categoria/cadastro', loadChildren: './categoria/cadastro/cadastro.module#CadastroPageModule' },
 ];
 
 @NgModule({
