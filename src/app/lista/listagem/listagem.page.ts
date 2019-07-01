@@ -27,4 +27,8 @@ export class ListagemPage implements OnInit {
     this.navCtrl.navigateForward(link);
     
   }
+
+  public redirectPage() {
+    this.navCtrl.navigateForward('/lista/cadastro/[]');
+  }
 }

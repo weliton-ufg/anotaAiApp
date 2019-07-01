@@ -1,6 +1,9 @@
 CREATE TABLE IF NOT EXISTS categorias(id integer primary key AUTOINCREMENT NOT NULL, name TEXT UNIQUE);
 CREATE TABLE IF NOT EXISTS produtos (id integer primary key AUTOINCREMENT NOT NULL,unidade CHAR TEXT,descricao TEXT UNIQUE,valor_unitario MONEY, img blob, categoriaId INTEGER);
 
+CREATE TABLE IF NOT EXISTS listaCompra(id integer primary key AUTOINCREMENT NOT NULL, name TEXT UNIQUE, dataCriacao Date, dataExecucao Date, status integer);
+CREATE TABLE IF NOT EXISTS itemListaCompra(id integer primary key AUTOINCREMENT NOT NULL, name TEXT UNIQUE, idListaCompra integer, idProduto integer);
+
 
 INSERT OR IGNORE INTO categorias (name) values ('Carnes e frios');
 INSERT OR IGNORE INTO categorias (name) values ('Bebidas');
