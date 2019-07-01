@@ -49,7 +49,7 @@ export class DatabaseService {
       this.sqlitePorter.importSqlToDb(this.database, sql)
         .then(_ => {
           this.loadCategorias();
-          this.loadProdutos();
+          this.loadProdutos('');
           this.dbReady.next(true);
         })
         .catch(e =>  alert(e));
@@ -70,7 +70,8 @@ export class DatabaseService {
     return this.categorias.asObservable();
   }
 
-  getProdutos(): Observable<Produtos[]> {
+  getProdutos(query): Observable<Produtos[]> {
+    this.loadProdutos(query);
     return this.produtos.asObservable();
   }
 
@@ -91,8 +92,13 @@ export class DatabaseService {
   }
 
 
-  loadProdutos() {
-    return this.database.executeSql('SELECT pro.id , pro.descricao , pro.unidade , cat.name , pro.img FROM produtos pro LEFT join categorias cat on cat.id=pro.categoriaId', []).then(data => {
+  loadProdutos(query) {
+    let clausula='';
+    if(query!=null && query!=''){
+      clausula  = "WHERE pro.descricao like '%"+query+"%'";
+    }
+   
+    return this.database.executeSql('SELECT pro.id , pro.descricao , pro.unidade , cat.name , pro.img FROM produtos pro LEFT join categorias cat on cat.id=pro.categoriaId '+clausula, []).then(data => {
       let produtos: Produtos[] = [];
  
       if (data.rows.length > 0) {
@@ -111,8 +117,21 @@ export class DatabaseService {
       
       this.produtos.next(produtos);
     });
+
   }
 
+ 
+  getProduto(id): Promise<Produtos> {
+    return this.database.executeSql('SELECT id , descricao , unidade , categoriaId , img FROM produtos WHERE id = ?', [id]).then(data => {
+      return {
+        id: data.rows.item(0).id,
+        name: data.rows.item(0).descricao,
+        unidade: data.rows.item(0).unidade,
+        categoria: data.rows.item(0).categoriaId,
+        img: data.rows.item(0).img
+      }
+    });
+  }
 
   getCategoria(id): Promise<Categorias> {
     return this.database.executeSql('SELECT * FROM categorias WHERE id = ?', [id]).then(data => {
@@ -124,7 +143,6 @@ export class DatabaseService {
   }
 
   addCategoria(name: String) {
-    let data = [name];
     return this.database.executeSql('INSERT INTO categorias (name) VALUES (?)', [name]).then(_ => {
       this.loadCategorias();
     });
@@ -139,6 +157,26 @@ export class DatabaseService {
   deleteCategoria(id) {
     return this.database.executeSql('DELETE FROM categorias WHERE id = ?', [id]).then(_ => {
       this.loadCategorias();
+    });
+  }
+
+
+  addProduto(prod: Produtos) {
+    let data = [prod.name, prod.categoria, prod.unidade];
+   
+    return this.database.executeSql('INSERT INTO produtos (descricao, categoriaId, unidade) VALUES (?, ?, ?)', data).then(_ => {
+      this.loadProdutos('');
+    });
+  }
+  updateProduto(prod: Produtos) {
+    let data = [prod.name, prod.categoria, prod.unidade];
+    return this.database.executeSql(`UPDATE produtos SET descricao = ?, categoriaId = ?, unidade = ? WHERE id = ${prod.id}`, data).then(data => {
+      this.loadProdutos('');
+    })
+  }
+  deleteProduto(id) {
+    return this.database.executeSql('DELETE FROM produtos WHERE id = ?', [id]).then(_ => {
+      this.loadProdutos('');
     });
   }
 

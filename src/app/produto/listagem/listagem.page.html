@@ -5,10 +5,18 @@
       </ion-buttons>
     <ion-title>Lista de Produtos</ion-title>
   </ion-toolbar>
+
+  <ion-toolbar>
+      <ion-searchbar (ionInput)="filterProducts($event)" [(ngModel)]="campoDeBusca" 
+      placeholder="Filtrar Produtos" (ionCancel)="filterProducts($event)"
+      showCancelButton="focus">
+      </ion-searchbar>
+  </ion-toolbar>
+ 
 </ion-header>
 
-<ion-content>
-
+<ion-content fullscreen>
+ 
     <ion-list  *ngFor="let product of produtos" [routerLink]="['/produto/cadastro/', product.id]" >
         <ion-item >
          <!--<ion-img  src="'{{product.img}}'" ></ion-img>-->
@@ -25,61 +33,5 @@
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
   </ion-fab>
-<!--
-    <ion-searchbar (ionInput)="filterProducts($event)" [(ngModel)]="campoDeBusca"></ion-searchbar>
-    <ion-list>
-      <ion-item-sliding *ngFor="let product of produtos">
-  
-        <button ion-item (click)="editProduct(product.id)">
-          <h1>{{ product.name }}</h1>
-          <h2>{{ product.unidade}}</h2>
-        </button>
-  
-        <ion-item-options side="left">
-          <ion-button color="danger">
-            <ion-icon name="trash"></ion-icon>
-            Excluir
-          </ion-button>
-        </ion-item-options>
-  
-      </ion-item-sliding>
-    </ion-list>
-  
-    <ion-fab right bottom>
-      <button ion-fab color="light" (click)="addProduct()"><ion-icon name="add"></ion-icon></button>
-    </ion-fab>
-   <ion-row>
-        <ion-col>
-          <ion-card class="ioncard"  (click)="detalheProduto('/produto/cadastro')"  >
-            <ion-card-header>
-               <ion-icon name="Teste" color="success" class="ioncardIcon"></ion-icon>
-              <ion-card-subtitle>teste</ion-card-subtitle>
-            </ion-card-header>
-          
-            <ion-card-content>
-             
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-        
-    </ion-row>
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button color="primary">
-          <ion-icon name="add"></ion-icon>
-        </ion-fab-button>
-    </ion-fab>
-    -->
 </ion-content>
 
-<!--
-<ion-footer>
-    <ion-toolbar>
-      <p>Total: {{ produtos.length }}</p>
-      <ion-list>
-        <ion-item no-lines>
-          <ion-label>Listar inativos</ion-label>
-          <ion-toggle name="listarInativos" [(ngModel)]="inativos" (ionChange)="getAllProducts()"></ion-toggle>
-        </ion-item>
-      </ion-list>
-    </ion-toolbar> 
-  </ion-footer>-->

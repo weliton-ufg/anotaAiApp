@@ -13,20 +13,12 @@ export class ListagemPage implements OnInit {
 
   produtos : Produtos[]=[];
 
-  campoDeBusca =null;
+  campoDeBusca ='';
 
   constructor(public navCtrl: NavController,private db: DatabaseService) {}
 
   ngOnInit() {
-    this.db.getDatabaseState().subscribe(rdy => {
-      if (rdy) {
-        this.db.getProdutos().subscribe(prods => {
-          this.produtos = prods;
-
-        })
-        
-      }
-    });
+    this.getAllProducts();
   }
   
   public redirectPage() {
@@ -38,9 +30,16 @@ export class ListagemPage implements OnInit {
   }
 
   getAllProducts() {
-  //  this.db.getAllProducts(!this.inativos, this.campoDeBusca)
-  //    .then((result: any[]) => {
-  //      this.produtos = result;
-  //    });
+    if(this.campoDeBusca==null){
+      this.campoDeBusca='';
+    }
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {
+        this.db.getProdutos(this.campoDeBusca.trim()).subscribe(prods => {
+          this.produtos = prods;
+        })  
+      }
+    });
+   
   }
 }

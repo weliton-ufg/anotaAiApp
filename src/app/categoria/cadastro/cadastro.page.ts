@@ -1,4 +1,4 @@
-import { DatabaseService,Categorias } from '../../service/database.service';
+import { DatabaseService } from '../../service/database.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
@@ -28,16 +28,6 @@ export class CadastroPage implements OnInit {
     });
   });
 
-  // this.id = this.activatedRoute.snapshot.paramMap.get('id');
-
-   //this.db.getDatabaseState().subscribe(rdy => {
-   // if (rdy) {
-   //   this.db.getCategoria().subscribe(cats => {
-    //    this.categoria = cats;
-    //  })
-      
-    //}
-  //});
  }
 
   salvar() {

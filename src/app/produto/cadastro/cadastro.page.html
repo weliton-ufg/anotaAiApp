@@ -8,5 +8,47 @@
 </ion-header>
 
 <ion-content>
+    <br/>
+
+    <form (ngSubmit)="salvar()">
+        <ion-item>
+            <ion-label color="primary" position="fixed">Nome <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input name="name" [(ngModel)]="produto.name" placeholder="nome do Produto" required></ion-input>
+        </ion-item>
+        
+        <ion-item>
+            <ion-label color="primary" position="fixed">Unidade <ion-text color="danger">*</ion-text></ion-label>
+            <ion-input name="unidade" [(ngModel)]="produto.unidade" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label color="primary" position="fixed">Categoria <ion-text color="danger">*</ion-text></ion-label>
+            <ion-select name="categoria"  [(ngModel)]="produto.categoria"  value="brown" okText="Ok!" 
+            cancelText="Cancelar" required>
+              <ion-select-option  *ngFor="let cat of categorias"
+              [value]="cat.id" >{{cat.name}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <br/>
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="block" (click)="salvar()">
+                        <ion-icon name="checkmark"></ion-icon>
+                        Salvar
+                      </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button expand="block" color="danger" type="submit">
+                        <ion-icon name="trash"></ion-icon>
+                      Excluir
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+    <br/>
+
 
 </ion-content>
