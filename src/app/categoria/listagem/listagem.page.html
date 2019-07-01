@@ -9,8 +9,15 @@
 
 <ion-content>
   
+  <ion-list>
+    <ion-item button *ngFor="let cat of categorias" [routerLink]="['/categoria/cadastro/', cat.id]">
+      <ion-label>
+        <h2>{{ cat.name }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed"   (click)="redirectPage()"  >
         <ion-fab-button color="primary">
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>

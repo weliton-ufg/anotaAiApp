@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController , ToastController} from '@ionic/angular';
+import { DatabaseService, Produtos } from 'src/app/service/database.service';
+
 
 
 @Component({
@@ -9,16 +11,26 @@ import { NavController } from '@ionic/angular';
 })
 export class ListagemPage implements OnInit {
 
-  constructor(public navCtrl: NavController) { }
+  produtos : Produtos[]=[];
+
+  campoDeBusca =null;
+
+  constructor(public navCtrl: NavController,private db: DatabaseService) {}
 
   ngOnInit() {
-  }
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {
+        this.db.getProdutos().subscribe(prods => {
+          this.produtos = prods;
 
-  public detalheProduto(link: any) {
-    console.log(link);
-    //alert('ola Carol!');
-    this.navCtrl.navigateForward(link);
-    
+        })
+        
+      }
+    });
+  }
+  
+  public redirectPage() {
+    this.navCtrl.navigateForward('/produto/cadastro/[]');
   }
 
 }

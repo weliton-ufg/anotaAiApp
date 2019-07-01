@@ -8,7 +8,55 @@
 </ion-header>
 
 <ion-content>
-    <ion-row>
+
+    <ion-list  *ngFor="let product of produtos" [routerLink]="['/produto/cadastro/', product.id]" >
+        <ion-item >
+
+         <ion-img  src="'{{product.img}}'" ></ion-img>
+    
+         <!-- <ion-label >{{product.name}}</ion-label>-->
+
+         <p> {{product.name}} </p>
+        
+        
+          <ion-item-options side="left">
+              <ion-button color="danger">
+                <ion-icon name="trash"></ion-icon>
+                Excluir
+              </ion-button>
+            </ion-item-options>
+        </ion-item>
+   </ion-list>
+
+   <ion-fab vertical="bottom" horizontal="end" slot="fixed"   (click)="redirectPage()"  >
+      <ion-fab-button color="primary">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
+<!--
+    <ion-searchbar (ionInput)="filterProducts($event)" [(ngModel)]="campoDeBusca"></ion-searchbar>
+    <ion-list>
+      <ion-item-sliding *ngFor="let product of produtos">
+  
+        <button ion-item (click)="editProduct(product.id)">
+          <h1>{{ product.name }}</h1>
+          <h2>{{ product.unidade}}</h2>
+        </button>
+  
+        <ion-item-options side="left">
+          <ion-button color="danger">
+            <ion-icon name="trash"></ion-icon>
+            Excluir
+          </ion-button>
+        </ion-item-options>
+  
+      </ion-item-sliding>
+    </ion-list>
+  
+    <ion-fab right bottom>
+      <button ion-fab color="light" (click)="addProduct()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+   <ion-row>
         <ion-col>
           <ion-card class="ioncard"  (click)="detalheProduto('/produto/cadastro')"  >
             <ion-card-header>
@@ -28,4 +76,18 @@
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>
     </ion-fab>
+    -->
 </ion-content>
+
+<!--
+<ion-footer>
+    <ion-toolbar>
+      <p>Total: {{ produtos.length }}</p>
+      <ion-list>
+        <ion-item no-lines>
+          <ion-label>Listar inativos</ion-label>
+          <ion-toggle name="listarInativos" [(ngModel)]="inativos" (ionChange)="getAllProducts()"></ion-toggle>
+        </ion-item>
+      </ion-list>
+    </ion-toolbar> 
+  </ion-footer>-->

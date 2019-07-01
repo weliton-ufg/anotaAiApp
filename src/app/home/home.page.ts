@@ -25,11 +25,9 @@ export class HomePage {
     }
 
   public redirectPage(link: any) {
-    console.log(link);
+    //console.log(link);
     //alert('ola Carol!');
     this.navCtrl.navigateForward(link);
-    
-
   }
 
 }

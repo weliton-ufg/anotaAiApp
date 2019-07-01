@@ -1,9 +1,37 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>cadastro</ion-title>
-  </ion-toolbar>
+
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+      <ion-title slot>Categoria</ion-title>
+    </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
+<br/>
+<ion-item>
+    <ion-label color="primary" position="fixed">Nome</ion-label>
+    <ion-input [(ngModel)]="categoria.name" placeholder="nome da categoria"></ion-input>
+</ion-item>
+<br/>
+
+<ion-grid>
+    <ion-row>
+        <ion-col>
+            <ion-button expand="block" (click)="salvar()">
+                <ion-icon name="checkmark"></ion-icon>
+                Salvar
+              </ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button expand="block" color="danger" (click)="excluir()">
+                <ion-icon name="trash"></ion-icon>
+              Excluir
+            </ion-button>
+        </ion-col>
+    </ion-row>
+</ion-grid>
 
 </ion-content>

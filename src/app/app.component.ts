@@ -19,12 +19,10 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-     // this.statusBar.styleDefault();
-     // #AARRGGBB where AA is an alpha value
       if (this.platform.is('android')) {
         this.statusBar.backgroundColorByHexString("#1b71a0");
       }
-      this.splashScreen.hide();
+      this.splashScreen.hide(); 
     });
   }
 }
