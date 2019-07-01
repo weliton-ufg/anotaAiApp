@@ -33,4 +33,14 @@ export class ListagemPage implements OnInit {
     this.navCtrl.navigateForward('/produto/cadastro/[]');
   }
 
+  filterProducts(ev: any) {
+    this.getAllProducts();
+  }
+
+  getAllProducts() {
+  //  this.db.getAllProducts(!this.inativos, this.campoDeBusca)
+  //    .then((result: any[]) => {
+  //      this.produtos = result;
+  //    });
+  }
 }

@@ -8,7 +8,7 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage {
 
-  public dataAtual:String= formatDate(new Date().toLocaleString() , 'pt-br');
+  public dataAtual:String= formatDate(new Date().toLocaleDateString('pt-br') , 'pt-br');
   public menu= [
                   {name: 'Nova Lista', link: '/lista/cadastro',icon:'basket'},
                   {name: 'Minhas Listas', link: '/lista/listagem',icon:'paper'},        

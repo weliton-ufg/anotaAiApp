@@ -11,20 +11,12 @@
 
     <ion-list  *ngFor="let product of produtos" [routerLink]="['/produto/cadastro/', product.id]" >
         <ion-item >
-
-         <ion-img  src="'{{product.img}}'" ></ion-img>
-    
-         <!-- <ion-label >{{product.name}}</ion-label>-->
-
-         <p> {{product.name}} </p>
+         <!--<ion-img  src="'{{product.img}}'" ></ion-img>-->
+         <ion-avatar slot="start">
+            <ion-img  src="/assets/imgproduto.png" ></ion-img>
+          </ion-avatar>
         
-        
-          <ion-item-options side="left">
-              <ion-button color="danger">
-                <ion-icon name="trash"></ion-icon>
-                Excluir
-              </ion-button>
-            </ion-item-options>
+        <ion-label >{{product.name}}</ion-label>
         </ion-item>
    </ion-list>
 
