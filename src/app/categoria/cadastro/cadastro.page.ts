@@ -22,7 +22,8 @@ export class CadastroPage implements OnInit {
   this.route.paramMap.subscribe(params => {
     let catId = params.get('id');
 
-    this.bd.getCategoria(catId).then(cats => {
+    let clausula =' WHERE id='+catId;
+    this.bd.getCategoria(clausula).then(cats => {
       this.categoria = cats;
      
     });
@@ -46,6 +47,7 @@ export class CadastroPage implements OnInit {
         duration: 3000
       });
       toast.present();
+      this.categoria ={};
     })
     .catch(async (res)=> {
       let toast = await this.toast.create({
@@ -66,6 +68,12 @@ export class CadastroPage implements OnInit {
         duration: 3000
       });
       toast.present();
+      //PEGAR A ULTIMA CATEGORIA INSERIDA
+      let clausula ='WHERE id= (select max(id) FROM categorias);';
+      this.bd.getCategoria(clausula).then(cats => {
+        this.categoria = cats;
+       
+      });
       this.categoria=null;
     })
     .catch(async (res)=> {

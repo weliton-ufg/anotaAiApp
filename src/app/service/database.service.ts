@@ -109,8 +109,8 @@ export class DatabaseService {
     });
   }
 
-  getCategoria(id): Promise<Categorias> {
-    return this.database.executeSql('SELECT * FROM categorias WHERE id = ?', [id]).then(data => {
+  getCategoria(clausula): Promise<Categorias> {
+    return this.database.executeSql('SELECT * FROM categorias '+clausula, []).then(data => {
       return {
         id: data.rows.item(0).id,
         name: data.rows.item(0).name, 
