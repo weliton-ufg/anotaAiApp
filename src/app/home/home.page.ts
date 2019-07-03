@@ -10,9 +10,9 @@ export class HomePage {
 
   public dataAtual:String= formatDate(new Date().toLocaleDateString('pt-br') , 'pt-br');
   public menu= [
-                  {name: 'Nova Lista', link: '/lista/cadastro/[]',icon:'basket'},
-                  {name: 'Minhas Listas', link: '/lista/listagem',icon:'paper'},        
-                  {name: 'Novo Produto', link: '/produto/cadastro/[]',icon:'nutrition'},
+                  {name: 'Nova Lista', link: '/lista/cadastro/',icon:'basket'},
+                  {name: 'Minhas Listas', link: '/lista/listagem',icon:'paper'}, 
+                  {name: 'Novo Produto', link: '/produto/cadastro/',icon:'nutrition'},
                   {name: 'Produtos', link: '/produto/listagem',icon:'list-box' },
                   {name: 'Dashboard', link: '/dashboard',icon:'pie' },
                   {name: 'Compras', link: '/compras',icon:'cart' },

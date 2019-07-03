@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="success">
       <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
       </ion-buttons>
@@ -13,7 +13,10 @@
     <ion-item  [routerLink]="['/lista/cadastro', item.id]">
    
      <!-- <ion-img  src="'{{item.img}}'" ></ion-img>-->
-     <ion-icon name="paper"  class="ioncardIcon"></ion-icon>
+     
+     <ion-avatar slot="start">
+        <ion-img  src="/assets/iconlista.jpg" ></ion-img>
+     </ion-avatar>
   
       <ion-label style="margin-left: 20px;" >{{item.name}}</ion-label>
     </ion-item>
@@ -21,7 +24,7 @@
   </ion-list>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="redirectPage()" >
-      <ion-fab-button color="primary">
+      <ion-fab-button color="success">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
   </ion-fab>

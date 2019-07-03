@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="success">
       <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
       </ion-buttons>
@@ -12,17 +12,17 @@
 
     <form (ngSubmit)="salvar()">
         <ion-item>
-            <ion-label color="primary" position="fixed">Nome <ion-text color="danger">*</ion-text></ion-label>
+            <ion-label  position="fixed">Nome <ion-text color="danger">*</ion-text></ion-label>
             <ion-input name="name" [(ngModel)]="produto.name" placeholder="nome do Produto" required></ion-input>
         </ion-item>
         
         <ion-item>
-            <ion-label color="primary" position="fixed">Unidade <ion-text color="danger">*</ion-text></ion-label>
+            <ion-label  position="fixed">Unidade <ion-text color="danger">*</ion-text></ion-label>
             <ion-input name="unidade" [(ngModel)]="produto.unidade" required></ion-input>
         </ion-item>
 
         <ion-item>
-            <ion-label color="primary" position="fixed">Categoria <ion-text color="danger">*</ion-text></ion-label>
+            <ion-label  position="fixed">Categoria <ion-text color="danger">*</ion-text></ion-label>
             <ion-select name="categoria"  [(ngModel)]="produto.categoria"  value="brown" okText="Ok!" 
             cancelText="Cancelar" required>
               <ion-select-option  *ngFor="let cat of categorias"
@@ -34,7 +34,7 @@
         <ion-grid>
             <ion-row>
                 <ion-col>
-                    <ion-button expand="block"  type="submit" >
+                    <ion-button color="success" expand="block"  type="submit" >
                         <ion-icon name="checkmark"></ion-icon>
                         Salvar
                       </ion-button>

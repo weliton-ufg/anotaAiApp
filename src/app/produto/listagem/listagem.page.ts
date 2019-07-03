@@ -22,7 +22,7 @@ export class ListagemPage implements OnInit {
   }
   
   public redirectPage() {
-    this.navCtrl.navigateForward('/produto/cadastro/[]');
+    this.navCtrl.navigateForward('/produto/cadastro/');
   }
 
   filterProducts(ev: any) {

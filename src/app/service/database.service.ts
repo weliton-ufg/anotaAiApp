@@ -333,7 +333,6 @@ export class DatabaseService {
 
 
   getListaCompra(clausula): Promise<Lista> {
-    
     return this.database.executeSql('SELECT id , name, dataCriacao, status FROM listaCompra '+clausula, []).then(data => {
       return {
         id: data.rows.item(0).id,
@@ -346,14 +345,15 @@ export class DatabaseService {
 
 
   loadListaCompras() {
-    return this.database.executeSql('SELECT id , name, dataCriacao FROM listaCompra ', []).then(data => {
+    return this.database.executeSql('SELECT id , name, dataCriacao , status FROM listaCompra ', []).then(data => {
       let listaCompra: Lista[] = [];
       if (data.rows.length > 0) {
         for (var i = 0; i < data.rows.length; i++) {
           listaCompra.push({ 
             id: data.rows.item(i).id,
             name: data.rows.item(i).name,
-            dataCriacao :data.rows.item(i).dataCriacao
+            dataCriacao :data.rows.item(i).dataCriacao,
+            status :data.rows.item(i).status
            });
         }
       }

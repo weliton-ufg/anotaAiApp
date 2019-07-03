@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="success">
       <ion-buttons slot="start">
           <ion-back-button></ion-back-button>
       </ion-buttons>
@@ -8,46 +8,64 @@
 </ion-header>
 
 <ion-content>
-  <div [hidden]="lista.id !=null">
+   <!-- -->
+  
     <br/>
-    <ion-item>
-        <ion-label color="primary" position="fixed">Nome</ion-label>
-        <ion-input [(ngModel)]="lista.name" placeholder="nome da lista"></ion-input>
-    </ion-item>
-    <br/>
-    
-    <ion-grid>
+    <ion-grid [hidden]="lista.id != null">
+      <ion-item>
+          <ion-label  position="fixed">Nome</ion-label>
+          <ion-input [(ngModel)]="lista.name" placeholder="nome da lista"></ion-input>
+      </ion-item>
+      <br/>
+      
         <ion-row>
             <ion-col>
-                <ion-button expand="block" (click)="salvarLista()">
+                <ion-button color="success" expand="block" expand="full" size="large" (click)="salvarLista()">
                     <ion-icon name="add"></ion-icon>
                     Adicionar Items
-                  </ion-button>
+                </ion-button>
             </ion-col>
         </ion-row>
     </ion-grid>
-  </div> 
+  
+  <ion-grid [hidden]="lista.id == null">
+    <ion-list  *ngFor="let item of items"  (click)= "onclickItem(item)">
+       
+      <ion-item >
+      <!--<ion-img  src="'{{product.img}}'" ></ion-img>-->
+       <ion-avatar slot="start">
+          <ion-img  src="/assets/imgproduto.png" ></ion-img>
+       </ion-avatar>
 
+      <ion-label >{{item.nomeProduto}}</ion-label>
 
-  <ion-list  *ngFor="let item of items"  (click)= "onclickItem(item)" [hidden]="lista.id ==null">
-    <ion-item >
-     <!--<ion-img  src="'{{product.img}}'" ></ion-img>-->
-     <ion-avatar slot="start">
-        <ion-img  src="/assets/imgproduto.png" ></ion-img>
-      </ion-avatar>
-
-    <ion-label >{{item.nomeProduto}}</ion-label>
-
-    <ion-checkbox  [(ngModel)]="item.adicionado" [disabled]="lista.status == 1" color="primary"></ion-checkbox>
-    </ion-item>
-</ion-list>
-</ion-content>
+      <ion-checkbox  [(ngModel)]="item.adicionado" [disabled]="lista.status == 1" ></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    </ion-grid>
+  </ion-content>
 
 <ion-footer>
     <ion-toolbar>
         <ion-item>
-          <ion-label color="primary" style="font-weight: bold;font-size: 15px"  > {{total}} Selecionados</ion-label>
-          <ion-label slot="end" color="primary" style="font-weight: bold;font-size: 15px" >{{lista.name}}</ion-label> 
+
+          <ion-grid> 
+            <ion-row>
+                <ion-col>
+                    <ion-label  style="font-weight: bold;font-size: 15px" > {{total}} Selecionados</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-label slot="end" color="primary" style="font-weight: bold;font-size: 15px" >{{lista.name}}</ion-label>
+                </ion-col>
+                <ion-col>
+                    <ion-button expand="block"  color="success" >
+                        <ion-icon name="cart"></ion-icon>
+                        Executar
+                    </ion-button>
+                </ion-col>
+            </ion-row> 
+          </ion-grid>
         </ion-item>
+      
     </ion-toolbar>
 </ion-footer>

@@ -32,6 +32,6 @@ export class ListagemPage implements OnInit {
   }
 
   public redirectPage() {
-    this.navCtrl.navigateForward('/lista/cadastro/[]');
+    this.navCtrl.navigateForward('/lista/cadastro/');
   }
 }

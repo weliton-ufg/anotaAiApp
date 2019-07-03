@@ -16,34 +16,51 @@ export class CadastroPage implements OnInit {
   campoDeBusca ='';
   total = 0;
   dataCriacao= new Date();
-  
+
   constructor(private route: ActivatedRoute, 
     private db : DatabaseService,
     private router: Router, 
     private toast: ToastController) { }
 
-  ionViewDidEnter() {
-    this.getTotalSelecionado();
-  } 
-  ngOnInit() {
+    /*
+     ionViewWillEnter: É acionado ao entrar em uma página antes de se tornar a ativa.
+     Use-o para tarefas que você deseja fazer toda vez que entrar na visualização 
+     (definindo ouvintes de eventos, atualizando uma tabela, etc.).
+     */
+  ionViewWillEnter() {
     this.limpar();
     this.route.paramMap.subscribe(params => {
       let id = params.get('id');
       if(id!=null){
+        this.lista.id=id;
          let clausula='WHERE id = ' +id;
           this.db.getListaCompra(clausula).then(lista => {
             this.lista = lista;
             this.getItems(this.lista.id);
-          });
-      }else{
+         });
+      }else{ 
           this.getItems(null);
       }
 
     });
+  } 
+
+  /*ionViewWillLeave:
+    Despedido quando você sai de uma página, 
+    antes de deixar de ser a ativa. Use-o para coisas que você precisa 
+    executar toda vez que estiver saindo de uma página (desative os ouvintes de eventos, etc.).
+    */
+   ionViewWillLeave(){
+      this.limpar();
+   }
+  ngOnInit() {
+
   }
 
+
+
   limpar(){
-    this.lista={};
+    this.total=0;
     this.items=[];
     this.campoDeBusca ='';
     this.dataCriacao= new Date();
@@ -83,11 +100,12 @@ salvarLista(){
       if (rdy) {
         this.db.getItems(idLista).subscribe(items => {
           this.items = items;
+          this.getTotalSelecionado();
         })  
       }
     });
 
-    this.getTotalSelecionado();
+   
   }
 
   onclickItem(item){
@@ -111,21 +129,22 @@ getItem(idLista, idProduto){
     for (let reg of this.items) {
       if(item.idProduto==reg.idProduto){
         this.items.indexOf(item);
+        this.getTotalSelecionado();
       }
     }
   });
-  this.getTotalSelecionado();
+ 
 }
 
   getTotalSelecionado(){
     this.total=0;
-    for (let item of this.items) {
+    if(this.items.length >0){
+     for (let item of this.items) {
         if(item.adicionado){
           this.total++;
         }
       }
-
-      return this.total;
+    }
   }
 
 }
