@@ -18,7 +18,8 @@
         
         <ion-item>
             <ion-label  position="fixed">Unidade <ion-text color="danger">*</ion-text></ion-label>
-            <ion-input name="unidade" [(ngModel)]="produto.unidade" required></ion-input>
+            <ion-input name="unidade" [(ngModel)]="produto.unidade" 
+            placeholder="EX:( CX , UN)"></ion-input>
         </ion-item>
 
         <ion-item>
@@ -34,13 +35,15 @@
         <ion-grid>
             <ion-row>
                 <ion-col>
-                    <ion-button color="success" expand="block"  type="submit" >
+                    <ion-button color="success" expand="block"  type="submit" 
+                    [disabled]="produto.name==null && produto.categoria==null">
                         <ion-icon name="checkmark"></ion-icon>
                         Salvar
                       </ion-button>
                 </ion-col>
                 <ion-col>
-                    <ion-button expand="block" color="danger" (click)="excluir()">
+                    <ion-button expand="block" color="danger" (click)="excluir()"
+                    [disabled]="produto.id==null">
                         <ion-icon name="trash"></ion-icon>
                       Excluir
                     </ion-button>
@@ -49,6 +52,4 @@
         </ion-grid>
     </form>
     <br/>
-
-
 </ion-content>

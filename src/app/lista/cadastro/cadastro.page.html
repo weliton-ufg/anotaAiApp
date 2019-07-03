@@ -20,7 +20,8 @@
       
         <ion-row>
             <ion-col>
-                <ion-button color="success" expand="block" expand="full" size="large" (click)="salvarLista()">
+                <ion-button color="success" expand="block" expand="full" size="large"
+                 (click)="salvarLista()" [disabled]="lista.name == null">
                     <ion-icon name="add"></ion-icon>
                     Adicionar Items
                 </ion-button>
@@ -39,7 +40,9 @@
 
       <ion-label >{{item.nomeProduto}}</ion-label>
 
-      <ion-checkbox  [(ngModel)]="item.adicionado" [disabled]="lista.status == 1" ></ion-checkbox>
+      <ion-checkbox  [(ngModel)]="item.adicionado" 
+        [disabled]="lista.id == null" >
+      </ion-checkbox>
       </ion-item>
     </ion-list>
     </ion-grid>
@@ -58,7 +61,7 @@
                     <ion-label slot="end" color="primary" style="font-weight: bold;font-size: 15px" >{{lista.name}}</ion-label>
                 </ion-col>
                 <ion-col>
-                    <ion-button expand="block"  color="success" >
+                    <ion-button expand="block"  color="success" [disabled]="lista.id==null && items.length==0" >
                         <ion-icon name="cart"></ion-icon>
                         Executar
                     </ion-button>

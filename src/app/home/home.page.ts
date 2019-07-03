@@ -14,8 +14,8 @@ export class HomePage {
                   {name: 'Minhas Listas', link: '/lista/listagem',icon:'paper'}, 
                   {name: 'Novo Produto', link: '/produto/cadastro/',icon:'nutrition'},
                   {name: 'Produtos', link: '/produto/listagem',icon:'list-box' },
-                  {name: 'Dashboard', link: '/dashboard',icon:'pie' },
-                  {name: 'Compras', link: '/compras',icon:'cart' },
+                 // {name: 'Dashboard', link: '/dashboard',icon:'pie' },
+                 // {name: 'Compras', link: '/compras',icon:'cart' },
                   {name: 'Categorias', link: '/categoria/listagem',icon:'bookmark' },
                   {name: 'QR-Code', link: '#',icon:'qr-scanner' }
                 ];
