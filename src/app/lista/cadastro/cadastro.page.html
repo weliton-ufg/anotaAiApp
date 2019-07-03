@@ -8,5 +8,46 @@
 </ion-header>
 
 <ion-content>
+  <div [hidden]="lista.id !=null">
+    <br/>
+    <ion-item>
+        <ion-label color="primary" position="fixed">Nome</ion-label>
+        <ion-input [(ngModel)]="lista.name" placeholder="nome da lista"></ion-input>
+    </ion-item>
+    <br/>
+    
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" (click)="salvarLista()">
+                    <ion-icon name="add"></ion-icon>
+                    Adicionar Items
+                  </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+  </div> 
 
+
+  <ion-list  *ngFor="let item of items"  (click)= "onclickItem(item)" [hidden]="lista.id ==null">
+    <ion-item >
+     <!--<ion-img  src="'{{product.img}}'" ></ion-img>-->
+     <ion-avatar slot="start">
+        <ion-img  src="/assets/imgproduto.png" ></ion-img>
+      </ion-avatar>
+
+    <ion-label >{{item.nomeProduto}}</ion-label>
+
+    <ion-checkbox  [(ngModel)]="item.adicionado" [disabled]="lista.status == 1" color="primary"></ion-checkbox>
+    </ion-item>
+</ion-list>
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-item>
+          <ion-label color="primary" style="font-weight: bold;font-size: 15px"  > {{total}} Selecionados</ion-label>
+          <ion-label slot="end" color="primary" style="font-weight: bold;font-size: 15px" >{{lista.name}}</ion-label> 
+        </ion-item>
+    </ion-toolbar>
+</ion-footer>

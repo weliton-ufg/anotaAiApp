@@ -4,27 +4,24 @@
           <ion-back-button></ion-back-button>
       </ion-buttons>
     <ion-title>Lista de Produtos</ion-title>
-  </ion-toolbar>
+  </ion-toolbar> 
 
-  <ion-toolbar>
-      <ion-searchbar (ionInput)="filterProducts($event)" [(ngModel)]="campoDeBusca" 
-      placeholder="Filtrar Produtos" (ionCancel)="filterProducts($event)"
-      showCancelButton="focus">
-      </ion-searchbar>
-  </ion-toolbar>
- 
+  <ion-searchbar (ionInput)="filterProducts($event)" [(ngModel)]="campoDeBusca" 
+  placeholder="Filtrar Produtos" (ionCancel)="filterProducts($event)"
+  [showCancelButton]="true">
+</ion-searchbar>
 </ion-header>
 
-<ion-content fullscreen>
- 
-    <ion-list  *ngFor="let product of produtos" [routerLink]="['/produto/cadastro/', product.id]" >
-        <ion-item >
-         <!--<ion-img  src="'{{product.img}}'" ></ion-img>-->
-         <ion-avatar slot="start">
-            <ion-img  src="/assets/imgproduto.png" ></ion-img>
+<ion-content>
+   
+    
+    <ion-list  *ngFor="let product of produtos"  >
+        <ion-item [routerLink]="['/produto/cadastro/', product.id]">
+          <ion-avatar slot="start">
+              <ion-img  src="/assets/imgproduto.png" ></ion-img>
           </ion-avatar>
         
-        <ion-label >{{product.name}}</ion-label>
+          <ion-label >{{product.name}}</ion-label>
         </ion-item>
    </ion-list>
 

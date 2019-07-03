@@ -1,5 +1,7 @@
+import { Lista } from './../../service/database.service';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Categorias, DatabaseService } from 'src/app/service/database.service';
 
 @Component({
   selector: 'app-listagem',
@@ -8,22 +10,23 @@ import { NavController } from '@ionic/angular';
 })
 export class ListagemPage implements OnInit {
 
-  public lista= [
-    {name: 'Compra 10/01/2019'},
-    {name: 'Compra 11/02/2019'},
-    {name: 'Compra 12/03/2019'},
-    {name: 'Compra 20/03/2019'},
-    {name: 'Compra 09/04/2019'},
-    {name: 'Compra 25/04/2019'},
-  ]
-  constructor(public navCtrl: NavController) { }
+  lista: Lista[] = [];
+
+  constructor(public navCtrl: NavController,private db: DatabaseService) { }
 
   ngOnInit() {
+    this.db.getDatabaseState().subscribe(rdy => {
+      if (rdy) {
+        this.db.getListaCompras().subscribe(lista => {
+          this.lista = lista;
+        })
+        
+      }
+    });
   }
 
   public listaDetalhe(link: any) {
     console.log(link);
-    //alert('ola Carol!');
     this.navCtrl.navigateForward(link);
     
   }
