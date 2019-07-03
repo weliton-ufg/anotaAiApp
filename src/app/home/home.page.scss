@@ -1,7 +1,6 @@
-ion-content{
-
-  --ion-background-color :#f4f4f4;
-}
+//ion-content{
+  //--ion-background-color :#f4f4f4;
+//}
 .welcome-card ion-img {
     max-height: 35vh;
     overflow: hidden;
@@ -14,6 +13,7 @@ ion-content{
   .ioncard{
     background-color: white;
     border: solid 1px #18733c;
+    box-shadow: -1px 1px;
   }
   
   .ioncardIcon{

@@ -8,7 +8,7 @@
                </ion-avatar>
             
         </ion-toolbar>
-      </ion-header>
+ </ion-header>
 <ion-content style="background-color: #f3f4f6;">
   <ion-grid >
         
@@ -29,7 +29,11 @@
           <ion-col *ngFor="let item of menu"  size="6">
             <ion-card class="ioncard"  (click)="redirectPage(item.link)"  >
               <ion-card-header>
-                 <ion-icon name="{{item.icon}}" class="ioncardIcon"></ion-icon>
+                
+                    <ion-icon  name="{{item.icon}}" class="ioncardIcon">
+                    </ion-icon>
+              
+               
                 <ion-card-subtitle>{{item.name}}</ion-card-subtitle>
               </ion-card-header>
             
@@ -41,4 +45,36 @@
           
       </ion-row>
   </ion-grid>
+
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-tabs>
+            <ion-tab-bar slot="bottom">
+        
+                <ion-tab-button tab="home">
+                    <ion-icon name="home"></ion-icon>
+                    <ion-label>Inicio</ion-label>
+                </ion-tab-button>
+        
+              <ion-tab-button tab="schedule">
+                <ion-icon name="calendar"></ion-icon>
+                <ion-label>Promoções</ion-label>
+                <ion-badge>6</ion-badge>
+              </ion-tab-button>
+          
+              <ion-tab-button tab="person">
+                <ion-icon name="contacts"></ion-icon>
+                <ion-label>Conta</ion-label>
+              </ion-tab-button>
+          
+              <ion-tab-button tab="about">
+                <ion-icon name="information-circle"></ion-icon>
+                <ion-label>Sobre</ion-label>
+              </ion-tab-button>
+            </ion-tab-bar>
+          </ion-tabs>
+    </ion-toolbar>
+</ion-footer>
+
