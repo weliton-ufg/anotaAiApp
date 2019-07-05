@@ -1,26 +1,36 @@
 
  <ion-header>
-        <ion-toolbar color="success">
+       
+  <!--<ion-toolbar color="success">
                <ion-title slot="start" style="color: white;font-weight: bold;">Anota Aí</ion-title>
                
               <ion-avatar slot="end">
                   <ion-img style="height: 63%;margin-top: 12px; margin-left: -10px;" src="/assets/logo.png" ></ion-img>
                </ion-avatar>
             
-        </ion-toolbar>
+        </ion-toolbar>-->
  </ion-header>
-<ion-content style="background-color: #f3f4f6;">
+<ion-content style="background-color: #f3f4f6;" padding class="background">
+
+    <ion-toolbar color="primary">
+        <ion-title slot="start" style="color: white;font-weight: bold;">Anota Aí</ion-title>
+        
+       <ion-avatar slot="end">
+           <ion-img style="height: 63%;margin-top: 12px; margin-left: -10px;" src="/assets/logo.png" ></ion-img>
+        </ion-avatar>
+     
+ </ion-toolbar>
   <ion-grid >
         
       <ion-row>
           <ion-col>
-              <ion-label color="success"  style="font-weight: bold;font-size: 15px" >Hoje {{dataAtual}}</ion-label>
+              <ion-label   style="font-weight: bold;font-size: 15px;color: #fff" >Hoje {{dataAtual}}</ion-label>
           </ion-col>
       </ion-row>
     
       <ion-row>
           <ion-col>
-              <ion-label color="success" style="font-weight: bold;font-size: 15px" >O que deseja fazer?</ion-label>
+              <ion-label style="font-weight: bold;font-size: 15px;color: #fff" >O que deseja fazer?</ion-label>
           </ion-col>
       </ion-row>
         

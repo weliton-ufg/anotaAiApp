@@ -1,6 +1,10 @@
 //ion-content{
   //--ion-background-color :#f4f4f4;
 //}
+
+ion-content.background{
+  --background: url(../../assets/fundo.png) 0 0/100% 100% no-repeat;
+}
 .welcome-card ion-img {
     max-height: 35vh;
     overflow: hidden;
@@ -12,13 +16,13 @@
   
   .ioncard{
     background-color: white;
-    border: solid 1px #18733c;
+    border: solid 1px #008577;
     box-shadow: -1px 1px;
   }
   
   .ioncardIcon{
     font-size: 30px;
-    color: #18733c !important;
+    color: #008577 !important;
   }
   
   .ionGridHome{
