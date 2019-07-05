@@ -301,7 +301,6 @@ export class DatabaseService {
   return this.database.executeSql(select.toString(), []).then(data => {
    
     let items: ItemLista[] = [];
-    alert(data.rows.lengt);
     if (data.rows.length > 0) {
      
       for (var i = 0; i < data.rows.length; i++) {
@@ -317,7 +316,7 @@ export class DatabaseService {
     
     this.items.next(items);
   }).catch(async (res)=> {
-   alert(res);
+  // alert(res);
   });
 
 }
