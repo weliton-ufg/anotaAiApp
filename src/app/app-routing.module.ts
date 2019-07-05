@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardPageModule' },
   { path: 'categoria/listagem', loadChildren: './categoria/listagem/listagem.module#ListagemPageModule' },
   { path: 'categoria/cadastro/:id', loadChildren: './categoria/cadastro/cadastro.module#CadastroPageModule' },
+  { path: 'execucao/:id', loadChildren: './lista/execucao/execucao.module#ExecucaoPageModule' },
 ];
 
 @NgModule({

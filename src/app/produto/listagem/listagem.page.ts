@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController , ToastController} from '@ionic/angular';
+import { NavController , ToastController, LoadingController} from '@ionic/angular';
 import { DatabaseService, Produtos } from 'src/app/service/database.service';
 
 
@@ -15,9 +15,15 @@ export class ListagemPage implements OnInit {
 
   campoDeBusca ='';
 
-  constructor(public navCtrl: NavController,private db: DatabaseService) {}
+  constructor(public navCtrl: NavController,
+    private db: DatabaseService,
+    public loadingController: LoadingController) {}
 
   ngOnInit() {
+    this.loadingController.create({
+      message: 'Aguarde...',
+      duration: 1000
+    }).then(loading => loading.present());
     this.getAllProducts();
   }
   

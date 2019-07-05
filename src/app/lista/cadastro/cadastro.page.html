@@ -1,14 +1,14 @@
 <ion-header>
   <ion-toolbar color="success">
       <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
+          <ion-back-button ></ion-back-button>
       </ion-buttons>
     <ion-title>Criar Lista</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-   <!-- -->
+<ion-content cache-view="false">
+  
   
     <br/>
     <ion-grid [hidden]="lista.id != null">
@@ -48,7 +48,7 @@
     </ion-grid>
   </ion-content>
 
-<ion-footer>
+<ion-footer cache-view="false">
     <ion-toolbar>
         <ion-item>
 
@@ -61,7 +61,8 @@
                     <ion-label slot="end" color="primary" style="font-weight: bold;font-size: 15px" >{{lista.name}}</ion-label>
                 </ion-col>
                 <ion-col>
-                    <ion-button expand="block"  color="success" [disabled]="lista.id==null && total==0" >
+                    <ion-button expand="block"  color="success" [disabled]="lista.id==null && total==0"
+                    [routerLink]="['/execucao/', lista.id]">
                         <ion-icon name="cart"></ion-icon>
                         Executar
                     </ion-button>

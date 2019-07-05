@@ -208,8 +208,8 @@ export class DatabaseService {
     ITEMS LISTA DE COMPRAS
   */
 
- getItems(idLista): Observable<ItemLista[]> {
-    this.loadItems(idLista);
+ getItems(idLista,flagSomenteSalvos): Observable<ItemLista[]> {
+    this.loadItems(idLista,flagSomenteSalvos);
     return this.items.asObservable();
   }
 
@@ -264,7 +264,7 @@ export class DatabaseService {
     });
   }
 
- loadItems(idLista) {
+ loadItems(idLista,flagSomenteSalvos) {
    
    let sqlInserte = '';
    sqlInserte += ' insert into itemDaListaTemp (id , idproduto , idlistacompra) \n';
@@ -283,7 +283,13 @@ export class DatabaseService {
     select += '  item.idListaCompra , ';
     select += '  pro.id as idProduto  ';
     select += '  from produtos pro  ';
-    select += '  left join itemDaListaTemp item on item.idproduto=pro.id ';
+  
+    if(flagSomenteSalvos){
+      select += '  Inner join itemDaListaTemp item on item.idproduto=pro.id ';
+    }else{
+      select += '  left join itemDaListaTemp item on item.idproduto=pro.id ';
+    }
+    
     select += '  ORDER by item.id  DESC , ';
     select += '  pro.descricao ASC ; '; 
     
@@ -295,7 +301,7 @@ export class DatabaseService {
   return this.database.executeSql(select.toString(), []).then(data => {
    
     let items: ItemLista[] = [];
-  
+    alert(data.rows.lengt);
     if (data.rows.length > 0) {
      
       for (var i = 0; i < data.rows.length; i++) {

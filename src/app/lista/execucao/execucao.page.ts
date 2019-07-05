@@ -1,15 +1,14 @@
-
 import { Component, OnInit } from '@angular/core';
-import { DatabaseService, ItemLista, Lista } from 'src/app/service/database.service';
-import { NavController, ToastController, LoadingController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DatabaseService, ItemLista } from 'src/app/service/database.service';
+import { ToastController, LoadingController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-cadastro',
-  templateUrl: './cadastro.page.html',
-  styleUrls: ['./cadastro.page.scss'],
+  selector: 'app-execucao',
+  templateUrl: './execucao.page.html',
+  styleUrls: ['./execucao.page.scss'],
 })
-export class CadastroPage implements OnInit {
+export class ExecucaoPage implements OnInit {
   items : ItemLista[]=[];
   item :any = {};
   lista :any = {};
@@ -22,38 +21,28 @@ export class CadastroPage implements OnInit {
     private router: Router, 
     private toast: ToastController,
     public loadingController: LoadingController) { }
-  
+
     /*
      ionViewWillEnter: É acionado ao entrar em uma página antes de se tornar a ativa.
      Use-o para tarefas que você deseja fazer toda vez que entrar na visualização 
      (definindo ouvintes de eventos, atualizando uma tabela, etc.).
      */
   ionViewWillEnter() {
-  
-       // this.loadingController.create({
-       //   message: 'Aguarde...',
-        //  duration: 1000
-       // }).then(loading => {
-            //this.limpar();
-            this.route.paramMap.subscribe(params => {
-              let id = params.get('id');
-              if(id!=null){
-                this.lista.id=id;
-                let clausula='WHERE id = ' +id;
-                  this.db.getListaCompra(clausula).then(lista => {
-                    this.lista = lista;
-                    this.getItems(this.lista.id);
-                });
-              }else{ 
-                  this.getItems(null);
-              }
-        
-            });
+    this.route.paramMap.subscribe(params => {
+      let id = params.get('id');
+      if(id!=null){
+        this.lista.id=id;
+         let clausula='WHERE id = ' +id;
+          this.db.getListaCompra(clausula).then(lista => {
+            this.lista = lista;
+            this.getItems(this.lista.id);
+            
+         });
+      }else{ 
+          this.getItems(null);
+      }
 
-          //loading.present();
-        //});
-   
-
+    });
   } 
 
   /*ionViewWillLeave:
@@ -61,7 +50,9 @@ export class CadastroPage implements OnInit {
     antes de deixar de ser a ativa. Use-o para coisas que você precisa 
     executar toda vez que estiver saindo de uma página (desative os ouvintes de eventos, etc.).
     */
-
+   ionViewWillLeave(){
+     // this.limpar();
+   }
    ngOnInit() {
 
    }
@@ -71,8 +62,8 @@ export class CadastroPage implements OnInit {
   limpar(){
     this.total=0;
     this.items=[];
+    this.campoDeBusca ='';
     this.dataCriacao= new Date();
-    this.lista={};
   }
 
 salvarLista(){
@@ -88,11 +79,7 @@ salvarLista(){
     
     this.db.getListaCompra(clausulaWhere).then(lista => {
       this.lista = lista;
-      this.db.getItems(this.lista.id,false).subscribe(items => {
-        this.items = items;
-        this.getTotalSelecionado();
-      }) ;
-     // this.getItems(this.lista.id);
+      this.getItems(this.lista.id);
     });
 
     //this.lista=this.db.getListaCompra(clausulaWhere);
@@ -111,26 +98,33 @@ salvarLista(){
  getItems(idLista) {
     this.db.getDatabaseState().subscribe(rdy => {
       if (rdy) {
-        this.db.getItems(idLista,false).subscribe(items => {
+        this.db.getItems(idLista,true).subscribe(items => {
           this.items = items;
+          if(this.items.length >0){
+            for (let item of this.items) {
+               item.adicionado=false;
+             }
+          }
           this.getTotalSelecionado();
         })  
       }
     });
+
+   
   }
 
   onclickItem(item){
     this.item=item;
     if(this.item.id==null){
       item.idListaCompra=this.lista.id;
-      this.db.addItemLista(item);
+     // this.db.addItemLista(item);
 
     }else{
-      item.idListaCompra=null;
-      this.db.deleteItemLista(item.id);
+      //item.idListaCompra=null;
+     // this.db.deleteItemLista(item.id);
     }
 
-   this.getItem(this.lista.id,item.idProduto);
+   //this.getItem(this.lista.id,item.idProduto);
   
   }
 
